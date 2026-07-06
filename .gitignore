@@ -6,3 +6,5 @@
 *.synctex.gz
 /out/*
 !/out/Resume.pdf
+!/out/preview.png
+

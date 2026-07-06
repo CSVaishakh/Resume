@@ -2,6 +2,16 @@
 
 This repository contains the LaTeX source code and compiled PDF of my professional resume.
 
+---
+
+## 📄 Resume Preview
+
+[![Resume Preview](./out/preview.png)](./out/Resume.pdf)
+
+> 💡 **Tip:** Click on the preview image above or [click here](./out/Resume.pdf) to view the full ATS-friendly PDF.
+
+---
+
 ## Repository Structure
 
 *   [Resume.tex](./Resume.tex): The LaTeX source file containing the resume content, layout, and formatting.
