@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "C S Vaishakh",
+    "label": "Fullstack Developer",
+    "email": "vaishakhsubramonian@gmail.com",
+    "phone": "+91 7511137620",
+    "url": "https://vaishakh.vercel.app/",
+    "summary": "Artificial Intelligence & Data Science undergraduate with an interest in full-stack development and machine learning. Experienced in building applications using TypeScript (React, Next.js, Express.js etc.), backend systems with Go (Fiber and Gin, Postgres), AI/ML applications in Python using FastAPI and related machine learning frameworks.",
+    "location": {
+      "city": "Kottayam",
+      "region": "Kerala",
+      "countryCode": "IN"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "csvaishakh",
+        "url": "https://linkedin.com/in/csvaishakh"
+      },
+      {
+        "network": "GitHub",
+        "username": "CSVaishakh",
+        "url": "https://github.com/CSVaishakh"
+      }
+    ]
+  },
+  "education": [
+    {
+      "institution": "St. Joseph's College of Engineering and Technology, Palai",
+      "affiliation": "APJ Abdul Kalam Technological University",
+      "location": "Kottayam, Kerala",
+      "studyType": "B.Tech",
+      "area": "Artificial Intelligence and Data Science",
+      "startDate": "2023",
+      "endDate": "2027"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Quickhand",
+      "url": "https://github.com/CSVaishakh/QuickHand",
+      "startDate": "2025-12",
+      "highlights": [
+        "Implemented role-based access control across two user roles, securing Fiber v3 routes with stateless JWTs.",
+        "Built an authenticated WebSocket layer broadcasting real-time job alerts to matched handymen.",
+        "Structured the codebase as a Go workspace monorepo pairing the Fiber API with a TanStack Start frontend."
+      ],
+      "keywords": [
+        "Go",
+        "Fiber v3",
+        "WebSockets",
+        "React",
+        "TanStack Start",
+        "TypeScript",
+        "PostgreSQL",
+        "GORM",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Snip",
+      "url": "https://github.com/CSVaishakh/Snip",
+      "startDate": "2026-07",
+      "endDate": "2026-08",
+      "highlights": [
+        "Built a URL shortener with a Go (Gin) REST API, React dashboard, JWT auth, and collision-safe codes.",
+        "Cut redirect latency by fronting PostgreSQL with a Redis cache on the public redirect path.",
+        "Deployed the frontend on Vercel and the backend on AWS EC2 behind Caddy via GitHub Actions CI/CD."
+      ],
+      "keywords": [
+        "Go",
+        "Gin",
+        "GORM",
+        "PostgreSQL",
+        "Redis",
+        "JWT",
+        "React",
+        "Vite",
+        "Docker",
+        "AWS EC2",
+        "Vercel"
+      ]
+    },
+    {
+      "name": "PortfolyoIQ",
+      "url": "https://github.com/CSVaishakh/PortfolyoIQ",
+      "startDate": "2026-03",
+      "endDate": "2026-08",
+      "highlights": [
+        "Engineered a privacy-preserving rebalancing platform: Next.js client, Express API, FastAPI model service.",
+        "Trained logistic regression models in-browser with TensorFlow.js, eliminating raw portfolio data uploads.",
+        "Implemented Federated Averaging (FedAvg) on the Express aggregator to synchronize local model updates.",
+        "Self-hosted all three services on AWS EC2 behind Caddy via systemd, deployed by GitHub Actions."
+      ],
+      "keywords": [
+        "Next.js",
+        "Express.js",
+        "FastAPI",
+        "TensorFlow.js",
+        "Drizzle ORM",
+        "PostgreSQL",
+        "Bun",
+        "AWS EC2"
+      ]
+    },
+    {
+      "name": "ONT Monitor",
+      "url": "https://github.com/CSVaishakh/ONT-Monitor",
+      "startDate": "2026-04",
+      "endDate": "2026-04",
+      "highlights": [
+        "Built a Go microservice (Fiber v3, GORM) ingesting real-time ONT status change events.",
+        "Implemented thread-safe in-memory queues and a worker pool to evaluate outages without race conditions.",
+        "Integrated the Twilio API to dispatch outage and recovery WhatsApp alerts on state transitions."
+      ],
+      "keywords": [
+        "Go",
+        "Fiber v3",
+        "GORM",
+        "PostgreSQL",
+        "Twilio API",
+        "Docker"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming",
+      "keywords": [
+        "Python",
+        "TypeScript",
+        "Go",
+        "Java",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Web & Backend",
+      "keywords": [
+        "Next.js",
+        "React",
+        "Express.js",
+        "Fiber v3",
+        "Gin",
+        "FastAPI",
+        "Node.js",
+        "REST APIs",
+        "WebSockets"
+      ]
+    },
+    {
+      "name": "Databases & ORMs",
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "GORM",
+        "Drizzle ORM",
+        "Mongoose"
+      ]
+    },
+    {
+      "name": "AI / ML",
+      "keywords": [
+        "TensorFlow.js",
+        "scikit-learn",
+        "NumPy",
+        "Pandas",
+        "Feature Engineering",
+        "Model Evaluation"
+      ]
+    },
+    {
+      "name": "Tools & DevOps",
+      "keywords": [
+        "Git",
+        "GitHub Actions (CI/CD)",
+        "Docker",
+        "AWS EC2",
+        "Caddy",
+        "Vercel",
+        "Bun",
+        "Linux",
+        "Postman"
+      ]
+    }
+  ]
+}
