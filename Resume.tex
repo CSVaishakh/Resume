@@ -42,13 +42,27 @@
 \urlstyle{same}
 
 \raggedbottom
-\raggedright
+% Body copy is justified (not \raggedright): TeX can then shrink interword
+% space to pull trailing words back onto the line instead of orphaning them.
 \setlength{\tabcolsep}{0in}
+% Character protrusion + font expansion buy a little extra room per line and
+% keep the justified spacing even.
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+%----------TYPOGRAPHY TUNING----------
+% Body copy size/leading for bullets and skills. Bumped above the template's
+% \small so the page reads at full size instead of shrunk.
+\newcommand{\bodyfont}{\fontsize{10.5pt}{13.6pt}\selectfont}
+\newcommand{\itemgap}{0pt}      % extra space after each bullet
+\newcommand{\blockgap}{-5pt}    % space after a heading block
+\newcommand{\listgap}{-1pt}     % space after a bullet list
+\newcommand{\secpre}{-1pt}      % space above a section rule
+\newcommand{\secpost}{-3pt}     % space below a section rule
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{\secpre}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{\secpost}]
 
 % Ensure that generated PDF is machine readable/ATS parsable when supported
 \ifPDFTeX
@@ -58,10 +72,12 @@
 
 %-------------------------
 % Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+% The trailing %-signs and the \par matter: without them a bullet whose text
+% reaches the right margin picks up trailing glue and breaks to a second, empty
+% line. The \par also closes the paragraph while \bodyfont is still active so the
+% last line uses the right leading.
+\newcommand{\resumeItem}[1]{%
+  \item{\bodyfont #1\par}\vspace{\itemgap}%
 }
 
 \newcommand{\resumeSubheading}[4]{
@@ -69,21 +85,21 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{\blockgap}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{\blockgap}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{\blockgap}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
@@ -93,7 +109,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\listgap}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +134,7 @@
 
 %-----------ABOUT----------
 \section*{Professional Summary}
-AI \& Data Science undergraduate student with a strong interest in backend development, systems architecture, and machine learning. Experienced in building RESTful APIs with Go (Fiber) and Node.js (Express), managing relational databases like PostgreSQL, and developing full-stack web applications.
+AI \& Data Science undergraduate focused on backend development and systems architecture. Builds and deploys REST APIs in Go (Fiber, Gin) and Node.js (Express) over PostgreSQL and Redis.
 
 %-----------EDUCATION-----------
 \section{Education}
@@ -135,36 +151,38 @@ AI \& Data Science undergraduate student with a strong interest in backend devel
   \resumeProjectHeading
       {\textbf{\href{https://github.com/CSVaishakh/QuickHand}{Quickhand}}}{December 2025 -- Present}
       \resumeItemListStart
-        \resumeItem{Implemented role-based access control (RBAC) across two user roles, securing Fiber API routes and verifying sessions with stateless JWTs.}
-        \resumeItem{Engineered a high-performance monorepo using a Go backend (Fiber v3) and a React frontend (TanStack Start) orchestrated via Bun.}
-        \resumeItem{\textbf{Technologies}: Go, Fiber v3, React, TanStack Start, TypeScript, Tailwind CSS, PostgreSQL, GORM, Docker}
+        \resumeItem{Implemented role-based access control across two user roles, securing Fiber v3 routes with stateless JWTs.}
+        \resumeItem{Built an authenticated WebSocket layer broadcasting real-time job alerts to matched handymen.}
+        \resumeItem{Structured the codebase as a Go workspace monorepo pairing the Fiber API with a TanStack Start frontend.}
+        \resumeItem{\textbf{Technologies}: Go, Fiber v3, WebSockets, React, TanStack Start, TypeScript, PostgreSQL, GORM, Docker}
       \resumeItemListEnd
 
   \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/Snip}{Snip}}}{July 2026}
+      {\textbf{\href{https://github.com/CSVaishakh/Snip}{Snip}}}{July -- August 2026}
       \resumeItemListStart
-        \resumeItem{Built a full-stack URL shortener with a Go (Gin) REST API backed by PostgreSQL and Redis, and a React/TypeScript dashboard for managing short links.}
-        \resumeItem{Implemented JWT-based authentication and collision-safe short code generation, with a Redis-backed cache in front of PostgreSQL on the public redirect path.}
-        \resumeItem{Deployed the React frontend on Vercel and the Go backend on an AWS EC2 instance behind Caddy, with GitHub Actions CI building and vetting both apps on every push.}
-        \resumeItem{\textbf{Technologies}: Go, Gin, GORM, PostgreSQL, Redis, JWT, React, TypeScript, Vite, Tailwind CSS, Docker, AWS EC2, Vercel}
+        \resumeItem{Built a URL shortener with a Go (Gin) REST API, React dashboard, JWT auth, and collision-safe codes.}
+        \resumeItem{Cut redirect latency by fronting PostgreSQL with a Redis cache on the public redirect path.}
+        \resumeItem{Deployed the frontend on Vercel and the backend on AWS EC2 behind Caddy via GitHub Actions CI/CD.}
+        \resumeItem{\textbf{Technologies}: Go, Gin, GORM, PostgreSQL, Redis, JWT, React, Vite, Docker, AWS EC2, Vercel}
+      \resumeItemListEnd
+
+  \resumeProjectHeading
+      {\textbf{\href{https://github.com/CSVaishakh/PortfolyoIQ}{PortfolyoIQ}}}{March -- August 2026}
+      \resumeItemListStart
+        \resumeItem{Engineered a privacy-preserving rebalancing platform: Next.js client, Express API, FastAPI model service.}
+        \resumeItem{Trained logistic regression models in-browser with TensorFlow.js, eliminating raw portfolio data uploads.}
+        \resumeItem{Implemented Federated Averaging (FedAvg) on the Express aggregator to synchronize local model updates.}
+        \resumeItem{Self-hosted all three services on AWS EC2 behind Caddy via systemd, deployed by GitHub Actions.}
+        \resumeItem{\textbf{Technologies}: Next.js, Express.js, FastAPI, TensorFlow.js, Drizzle ORM, PostgreSQL, Bun, AWS EC2}
       \resumeItemListEnd
 
   \resumeProjectHeading
       {\textbf{\href{https://github.com/CSVaishakh/ONT-Monitor}{ONT Monitor}}}{April 2026}
       \resumeItemListStart
-        \resumeItem{Built a Go-based microservice using Fiber v3 and GORM to ingest and process real-time status change events for ONTs.}
-        \resumeItem{Implemented thread-safe in-memory queues and a background worker pool to evaluate outages and prevent race conditions.}
-        \resumeItem{Integrated Twilio API to dispatch automated outage and recovery WhatsApp alerts to registered customers upon state transitions.}
+        \resumeItem{Built a Go microservice (Fiber v3, GORM) ingesting real-time ONT status change events.}
+        \resumeItem{Implemented thread-safe in-memory queues and a worker pool to evaluate outages without race conditions.}
+        \resumeItem{Integrated the Twilio API to dispatch outage and recovery WhatsApp alerts on state transitions.}
         \resumeItem{\textbf{Technologies}: Go, Fiber v3, GORM, PostgreSQL, Twilio API, Docker}
-      \resumeItemListEnd
-
-  \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/PortfolioIQ}{PortfolioIQ}}}{December 2025 -- April 2026}
-      \resumeItemListStart
-        \resumeItem{Engineered a privacy-preserving portfolio rebalancing platform structured as a monorepo using npm workspaces.}
-        \resumeItem{Designed a client-side training pipeline using TensorFlow.js to train local logistic regression models on a 12-dimensional feature vector, eliminating raw data uploads.}
-        \resumeItem{Implemented the Federated Averaging (FedAvg) algorithm on the Express.js aggregator to synchronize local updates with a FastAPI scikit-learn model.}
-        \resumeItem{\textbf{Technologies}: Next.js, Express.js, FastAPI, TensorFlow.js, Drizzle ORM, PostgreSQL, JWT, bcrypt, Python, TypeScript, Turborepo, Docker}
       \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -172,12 +190,12 @@ AI \& Data Science undergraduate student with a strong interest in backend devel
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.15in, label={}]
-	\small{\item{
+	\bodyfont{\item{
 	      \textbf{Programming}{: Python, TypeScript, Go, Java, JavaScript} \\
-	      \textbf{Web \& Backend}{: Next.js, React, Express.js, Fiber v3, Gin, FastAPI, Node.js, TanStack Start, REST APIs} \\
+	      \textbf{Web \& Backend}{: Next.js, React, Express.js, Fiber v3, Gin, FastAPI, Node.js, REST APIs, WebSockets} \\
 	      \textbf{Databases \& ORMs}{: PostgreSQL, MongoDB, Redis, GORM, Drizzle ORM, Mongoose} \\
-	      \textbf{AI / ML}{: TensorFlow.js, Feature Engineering, Model Evaluation, scikit-learn, NumPy, Pandas} \\
-	      \textbf{Tools}{: Git, GitHub Actions, Docker, AWS, Vercel, Turborepo, Bun, Postman, Linux, VS Code}
+	      \textbf{AI / ML}{: TensorFlow.js, scikit-learn, NumPy, Pandas, Feature Engineering, Model Evaluation} \\
+	      \textbf{Tools \& DevOps}{: Git, GitHub Actions (CI/CD), Docker, AWS EC2, Caddy, Vercel, Bun, Linux, Postman}
 	      }}
 \end{itemize}
 
