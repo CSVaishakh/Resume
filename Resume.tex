@@ -52,11 +52,11 @@
 %----------TYPOGRAPHY TUNING----------
 % Body copy size/leading for bullets and skills. Bumped above the template's
 % \small so the page reads at full size instead of shrunk.
-\newcommand{\bodyfont}{\fontsize{10.5pt}{13.6pt}\selectfont}
+\newcommand{\bodyfont}{\fontsize{10.5pt}{13pt}\selectfont}
 \newcommand{\itemgap}{0pt}      % extra space after each bullet
 \newcommand{\blockgap}{-5pt}    % space after a heading block
 \newcommand{\listgap}{-1pt}     % space after a bullet list
-\newcommand{\secpre}{-1pt}      % space above a section rule
+\newcommand{\secpre}{-4pt}      % space above a section rule
 \newcommand{\secpost}{-3pt}     % space below a section rule
 
 % Sections formatting
@@ -108,7 +108,7 @@
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[itemsep=1pt, parsep=0pt, topsep=2pt]}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{\listgap}}
 
 %-------------------------------------------
@@ -144,45 +144,51 @@ Artificial Intelligence \& Data Science undergraduate with an interest in full-s
     {B.Tech in Artificial Intelligence and Data Science --- APJ Abdul Kalam Technological University}{2023 -- 2027}
 \resumeSubHeadingListEnd
 
+%-----------EXPERIENCE-----------
+\section{Experience}
+\resumeSubHeadingListStart
+  \resumeProjectHeading
+      {\textbf{Intern} --- The Nexus Project, IEDC, St. Joseph's College of Engineering and Technology, Palai}{June 2025}
+    \resumeItemListStart
+      \resumeItem{Built a responsive landing page for HackSphere 2025, a fictional hackathon, in React, TypeScript and Vite.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
 %-----------PROJECTS-----------
 \section{Projects}
 \resumeSubHeadingListStart
 
   \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/QuickHand}{Quickhand}}}{December 2025 -- Present}
+      {\textbf{\href{https://github.com/CSVaishakh/QuickHand}{Quickhand}} $|$ \emph{Go, Fiber v3, WebSockets, TanStack Start, PostgreSQL, Docker}}{December 2025 -- Present}
       \resumeItemListStart
         \resumeItem{Implemented role-based access control across two user roles, securing Fiber v3 routes with stateless JWTs.}
         \resumeItem{Built an authenticated WebSocket layer broadcasting real-time job alerts to matched handymen.}
         \resumeItem{Structured the codebase as a Go workspace monorepo pairing the Fiber API with a TanStack Start frontend.}
-        \resumeItem{\textbf{Technologies}: Go, Fiber v3, WebSockets, React, TanStack Start, TypeScript, PostgreSQL, GORM, Docker}
       \resumeItemListEnd
 
   \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/Snip}{Snip}}}{July -- August 2026}
+      {\textbf{\href{https://github.com/CSVaishakh/Snip}{Snip}} $|$ \emph{Go, Gin, Redis, PostgreSQL, React, AWS EC2, Vercel}}{July -- August 2026}
       \resumeItemListStart
         \resumeItem{Built a URL shortener with a Go (Gin) REST API, React dashboard, JWT auth, and collision-safe codes.}
         \resumeItem{Cut redirect latency by fronting PostgreSQL with a Redis cache on the public redirect path.}
         \resumeItem{Deployed the frontend on Vercel and the backend on AWS EC2 behind Caddy via GitHub Actions CI/CD.}
-        \resumeItem{\textbf{Technologies}: Go, Gin, GORM, PostgreSQL, Redis, JWT, React, Vite, Docker, AWS EC2, Vercel}
       \resumeItemListEnd
 
   \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/PortfolyoIQ}{PortfolyoIQ}}}{March -- August 2026}
+      {\textbf{\href{https://github.com/CSVaishakh/PortfolyoIQ}{PortfolyoIQ}} $|$ \emph{Next.js, Express.js, FastAPI, TensorFlow.js, PostgreSQL, AWS EC2}}{March -- August 2026}
       \resumeItemListStart
         \resumeItem{Engineered a privacy-preserving rebalancing platform: Next.js client, Express API, FastAPI model service.}
         \resumeItem{Trained logistic regression models in-browser with TensorFlow.js, eliminating raw portfolio data uploads.}
         \resumeItem{Implemented Federated Averaging (FedAvg) on the Express aggregator to synchronize local model updates.}
         \resumeItem{Self-hosted all three services on AWS EC2 behind Caddy via systemd, deployed by GitHub Actions.}
-        \resumeItem{\textbf{Technologies}: Next.js, Express.js, FastAPI, TensorFlow.js, Drizzle ORM, PostgreSQL, Bun, AWS EC2}
       \resumeItemListEnd
 
   \resumeProjectHeading
-      {\textbf{\href{https://github.com/CSVaishakh/ONT-Monitor}{ONT Monitor}}}{April 2026}
+      {\textbf{\href{https://github.com/CSVaishakh/ONT-Monitor}{ONT Monitor}} $|$ \emph{Go, Fiber v3, GORM, PostgreSQL, Twilio API, Docker}}{April 2026}
       \resumeItemListStart
         \resumeItem{Built a Go microservice (Fiber v3, GORM) ingesting real-time ONT status change events.}
         \resumeItem{Implemented thread-safe in-memory queues and a worker pool to evaluate outages without race conditions.}
         \resumeItem{Integrated the Twilio API to dispatch outage and recovery WhatsApp alerts on state transitions.}
-        \resumeItem{\textbf{Technologies}: Go, Fiber v3, GORM, PostgreSQL, Twilio API, Docker}
       \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -196,6 +202,16 @@ Artificial Intelligence \& Data Science undergraduate with an interest in full-s
 	      \textbf{Databases \& ORMs}{: PostgreSQL, MongoDB, Redis, GORM, Drizzle ORM, Mongoose} \\
 	      \textbf{AI / ML}{: TensorFlow.js, scikit-learn, NumPy, Pandas, Feature Engineering, Model Evaluation} \\
 	      \textbf{Tools \& DevOps}{: Git, GitHub Actions (CI/CD), Docker, AWS EC2, Caddy, Vercel, Bun, Linux, Postman}
+	      }}
+\end{itemize}
+
+%-----------ACHIEVEMENTS & LEADERSHIP-----------
+\section{Achievements \& Leadership}
+\begin{itemize}[leftmargin=0.15in, label={}]
+	\bodyfont{\item{
+	      \textbf{ASTHRA 11.0 Student Coordinator}{: one of 4 leading the fest; set up 6 teams, co-managed leads (Sep 2026)} \\
+	      \textbf{Third Place, Portfolyo}{: portfolio website challenge, IEEE Student Branch SJCET Palai (June 2025)} \\
+	      \textbf{NPTEL Certification}{: Data Science Using Python, 12-week course (July -- October 2024)}
 	      }}
 \end{itemize}
 
